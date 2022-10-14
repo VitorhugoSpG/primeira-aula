@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova</title>
+</head>
+<body>
+    <h1>Quiosque Mirosmar - Controle de Vendas</h1>
+    <h2>----------Abertura do Quiosque----------</h2>
+   Quantidade de Água no estoque <input id="agua"> <br>
+   Quantidade de Coco no estoque <input id="coco"> <br>
+   <button onclick="abrir()">Abrir o Quiosque</button>
+   <div id="div_mensagem"></div>
+   <br>
+   <h2>----------Estoque Inicial----------</h2>
+   <div id="estoque"></div>
+   <br>
+   <h2>-----Registro das Operações de Venda-----</h2>
+   Entre com a quantidade de vendas: <input id="Qtd_venda">
+   <select name="" id="combo">
+    <option value="">Selecione</option>
+    <option value="C">Coco Fechado</option>
+    <option value="A">Água engarrafada</option>
+   </select>
+   <button onclick="venda()">Registrar a Venda</button>
+   <button style="background-color: red;" onclick="turno()">Encerrar o Turno</button>
+    <div id="div_mensagem1"></div>   
+    <div id="vendas"></div>
+</body>
+</html> 
+<script>
+    var Agua = 0
+    var Coco = 0
+    function abrir(){
+        Agua = Number(agua.value)
+        Coco = Number(coco.value)
+        if (Agua < 100){
+            div_mensagem.innerHTML = `<br>Com essa quantidade de Água engarrafada não dá para abrir o quiosque`
+        }
+        if (Coco < 200){
+            div_mensagem.innerHTML += `<br>Com essa quantidade de Coco fechado não dá para abrir o quiosque`
+        } 
+        estoque.innerHTML = `<span style="color: blue;">Água engarrafada:</span><b>${Agua}<b><br><br> <span style="color: green;">Coco fechado:</span><b>${Coco}</b>`
+    }
+
+    function venda(){
+        var Venda = Number(Qtd_venda.value)
+        Agua = Number(agua.value)
+        Coco = Number(coco.value)
+        var pvenda = Venda / total
+        
+        if (Agua >= 100 && Agua <= 1000) {
+            div_mensagem1.innerHTML = `Engarrafe mais água de coco`
+        }
+        if (Coco >= 200 && Coco <= 2000) {
+            div_mensagem1.innerHTML = `Compre mais cocos`
+        }
+        vendas.innerHTML = `Vendas de Água engarrafada <br> Saldo de produto no estoque:${Agua} <br> Quantidade de vendas:${Venda} <br> Porcentagem de vendas:${pvendas}`
+    }
+</script>
