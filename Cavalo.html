@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <select name="" id="combo">
-        <option value="1">cavalo 1</option>
-        <option value="2">cavalo 2</option>
-        <option value="3">cavalo 3</option>
-    </select> <br><br>
+    Nome do cavalo: <input id="in_cavalo">
+    Quantas Voltas: <input id="in_voltas">
+    Tempo de cada volta(min): <input id="in_tempomin">
+    Tempo de cada volta(max): <input id="in_tempomax">
+    <button onclick="reg()">registrar</button>
+    <br><br>
     <button onclick="corrida()">Começar corrida</button>
     <div id="div_mensagem"></div>
 </body>
+
 </html>
 <script>
-    function corrida(){
-        var cavalo = Number(combo.value)
-        for(var contador = 0; contador < 7; contador++){
-           parseInt(1 + Math.random * 7) 
-
+    var nomecavalo = []
+    function corrida() {
+        var voltas = Number(in_voltas.value)
+        div_mensagem.innerHTML = ''
+        for (var contador = 1; contador <= voltas; contador++) {
+            var cavalinho1 = Number(7 + Math.random() * 2)
+            var cavalinho2 = Number(7 + Math.random() * 2)
+            var cavalinho3 = Number(7 + Math.random() * 2)
+           /* cav1 = cav1 + cavalinho1
+            cav2 = cav2 + cavalinho2
+            cav3 = cav3 + cavalinho3*/
+            div_mensagem.innerHTML += `Volta${contador}<br>
+            ${nomecavalo[0]} – ${cavalinho1.toFixed(1)} – ${nomecavalo[1]} – ${cavalinho2.toFixed(1)} - ${nomecavalo[2]} – ${cavalinho3.toFixed(1)}<br> `
         }
-        div_mensagem.innerHTML = `Volta 1`
+
+        
+
+
+
+        /* for (var contadora = 0; contadora < 3; contadora++) {
+             var cavalinho1 = parseInt(7 + Math.random * 10).toFixed(1)
+             var cavalinho2 = parseInt(7 + Math.random * 10).toFixed(1)
+             var cavalinho3 = parseInt(7 + Math.random * 10).toFixed(1)
+             cav1 = cav1 + cavalinho1
+             cav2 = cav2 + cavalinho2
+             cav3 = cav3 + cavalinho3
+ 
+             div_mensagem.innerHTML+=``
+         }
+ 
+         
+         div_mensagem.innerHTML = `Volta 1`*/
+    }
+
+    function reg(){
+        var nome = in_cavalo.value
+        nomecavalo.push(nome)
     }
 </script>
